@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    // Объявляем musicServiceIntent как nullable
+    private var musicServiceIntent: Intent? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,6 +27,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Проверяем начальное состояние музыки из SharedPreferences
+        updateMusicState()
+
+        // Кнопка - Settings
         val settingsButton = findViewById<AppCompatButton>(R.id.Button_Settings)
         settingsButton.setOnClickListener {
             Log.i("MainActivity", "Clicked settingsButton: Go to settings")
@@ -30,22 +38,41 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Кнопка - Exit
         val exitButton = findViewById<Button>(R.id.Button_Exit)
         exitButton.setOnClickListener {
             Log.i("MainActivity", "Clicked exitButton: Stop program")
 
-            // Получаем состояние кнопки Music из SharedPreferences
-            val sharedPref = getSharedPreferences("SettingsPrefs", Context.MODE_PRIVATE)
-            val isMusicOn = sharedPref.getBoolean("isMusicOn", true) // true по умолчанию
+            // Обновляем состояние музыки перед выходом
+            val isMusicOn = updateMusicState()
 
-            // Выводим состояние музыки в лог
-            val musicState = if (isMusicOn) "On" else "Off"
-            Log.i("SettingsActivity", "Music state = $musicState")
-
+            // Останавливаем сервис только если он инициализирован и музыка была включена
+            if (isMusicOn) {
+                musicServiceIntent?.let {
+                    stopService(it)
+                    Log.i("MainActivity", "Music service stopped")
+                }
+            }
             finishAndRemoveTask()
         }
+    }
 
+    private fun updateMusicState(): Boolean {
+        val sharedPref = getSharedPreferences("SettingsPrefs", Context.MODE_PRIVATE)
+        val isMusicOn = sharedPref.getBoolean("isMusicOn", true) // true по умолчанию
 
+        if (isMusicOn) {
+            // Инициализируем musicServiceIntent и запускаем музыку, если она включена
+            if (musicServiceIntent == null) {
+                musicServiceIntent = Intent(this, MusicService::class.java)
+                startService(musicServiceIntent)
+                Log.i("MainActivity", "Music started")
+            }
+            Log.i("MainActivity", "Music state = On")
+        } else {
+            Log.i("MainActivity", "Music state = Off")
+        }
 
+        return isMusicOn
     }
 }

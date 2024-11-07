@@ -1,23 +1,14 @@
 package com.example.myapp
 
-import android.animation.ArgbEvaluator
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.transition.TransitionManager
 import android.util.Log
-import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -53,9 +44,11 @@ class SettingsActivity : AppCompatActivity() {
         if (isGreen) {
             musicButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.myGreen))
             musicButton.text = getString(R.string.on)
+            startMusicService() // Запускаем музыку при открытии, если включена
         } else {
             musicButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.myRed))
             musicButton.text = getString(R.string.off)
+            stopMusicService() // Останавливаем музыку, если выключена
         }
 
         // Обработчик клика для переключения состояния
@@ -64,10 +57,12 @@ class SettingsActivity : AppCompatActivity() {
                 Log.i("SettingsActivity", "Music: Off")
                 musicButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.myRed))
                 musicButton.text = getString(R.string.off)
+                stopMusicService()
             } else {
                 Log.i("SettingsActivity", "Music: On")
                 musicButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.myGreen))
                 musicButton.text = getString(R.string.on)
+                startMusicService()
             }
             isGreen = !isGreen
             Log.i("SettingsActivity", "Settings saved")
@@ -75,6 +70,15 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    private fun startMusicService() {
+        val musicServiceIntent = Intent(this, MusicService::class.java)
+        startService(musicServiceIntent)
+    }
+
+    private fun stopMusicService() {
+        val musicServiceIntent = Intent(this, MusicService::class.java)
+        stopService(musicServiceIntent)
+    }
 
     private fun saveSettings() {
         val sharedPref = getSharedPreferences("SettingsPrefs", Context.MODE_PRIVATE)
