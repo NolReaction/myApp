@@ -10,7 +10,7 @@ class MusicService : Service() {
 
     private lateinit var mediaPlayer: MediaPlayer
 
-    // Список треков
+    // Список треков с названиями
     private val musicList = listOf(
         R.raw.track1 to "track1",
         R.raw.track2 to "track2",
@@ -19,11 +19,11 @@ class MusicService : Service() {
         R.raw.track5 to "track5",
         R.raw.track6 to "track6"
     )
+    private var previousTrackIndex = -1  // Индекс предыдущей песни
 
     override fun onCreate() {
         super.onCreate()
         Log.i("MusicService", "Service created")
-
         playRandomTrack()
     }
 
@@ -32,8 +32,17 @@ class MusicService : Service() {
             mediaPlayer.release()
         }
 
-        // Выбираем случайный трек
-        val (trackResource, trackName) = musicList.random()
+        // Выбираем случайный трек, который не совпадает с предыдущим
+        var newTrackIndex: Int
+        do {
+            newTrackIndex = musicList.indices.random()
+        } while (newTrackIndex == previousTrackIndex)
+
+        // Обновляем индекс предыдущего трека
+        previousTrackIndex = newTrackIndex
+
+        // Получаем трек и его название
+        val (trackResource, trackName) = musicList[newTrackIndex]
 
         // Создаём и запускаем MediaPlayer
         mediaPlayer = MediaPlayer.create(this, trackResource)
