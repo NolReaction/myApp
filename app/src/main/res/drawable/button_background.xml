@@ -1,0 +1,22 @@
+<!-- res/drawable/button_background.xml -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/myBlue"> <!-- Цвет для Ripple-эффекта при нажатии -->
+
+    <!-- Состояние кнопки по умолчанию -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" /> <!-- Цвет фона по умолчанию -->
+            <corners android:radius="20dp" /> <!-- Закруглённые углы -->
+            <stroke android:width="6dp" android:color="@color/myBlue" /> <!-- Окантовка -->
+        </shape>
+    </item>
+
+    <!-- Ripple-эффект при нажатии -->
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/myBlue" /> <!-- Цвет, который будет появляться при Ripple-эффекте -->
+            <corners android:radius="20dp" />
+            <stroke android:width="6dp" android:color="@color/myBlue" />
+        </shape>
+    </item>
+</ripple>

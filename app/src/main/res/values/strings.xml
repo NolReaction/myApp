@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">myApp</string>
+    <string name="start">START</string>
+    <string name="settings">SETTINGS</string>
+    <string name="exit">EXIT</string>
+    <string name="back">BACK</string>
+    <string name="music">MUSIC</string>
+    <string name="x">X</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+
+</resources>

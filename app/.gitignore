@@ -1,0 +1,12 @@
+/build
+../.gradle
+../gradle
+../.idea
+
+proguard-rules.pro
+../build.gradle.kts
+../gradle.properties
+../gradlew
+../gradlew.bat
+../local.properties
+../settings.gradle.kts

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2B2B2B"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ImageButton_Shark"
+        android:layout_width="303dp"
+        android:layout_height="303dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_background"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/shark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Button_Start"
+        android:layout_width="303dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/audiowide"
+        android:text="@string/start"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageButton_Shark" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Button_Settings"
+        android:layout_width="244dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/audiowide"
+        android:text="@string/settings"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Button_Start" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Button_Exit"
+        android:layout_width="244dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/audiowide"
+        android:text="@string/exit"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
