@@ -1,0 +1,5 @@
+<resources>
+    <style name="AppTextStyle">
+        <item name="android:fontFamily">@font/russo_one</item>
+    </style>
+</resources>

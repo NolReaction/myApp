@@ -21,6 +21,9 @@ class SettingsActivity : BaseActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
+        // Применяем шрифт, основанный на текущем языке
+        applyFontBasedOnLocale()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.constraintLayout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -108,10 +111,16 @@ class SettingsActivity : BaseActivity() {
             apply()
         }
 
-        // Перезапускаем приложение для применения нового языка на всех экранах
+        // Перезапускаем все активности для обновления языка и шрифта
         val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         finish()
     }
+
+    override fun onResume() {
+        super.onResume()
+        applyFontBasedOnLocale()  // Обновляем шрифт, если возвращаемся в активность
+    }
+
 }

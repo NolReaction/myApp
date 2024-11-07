@@ -20,6 +20,9 @@ class MainActivity : BaseActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        // Применяем шрифт, основанный на текущем языке
+        applyFontBasedOnLocale()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -73,5 +76,10 @@ class MainActivity : BaseActivity() {
         }
 
         return isMusicOn
+    }
+
+    override fun onResume() {
+        super.onResume()
+        applyFontBasedOnLocale()  // Обновляем шрифт, если возвращаемся в активность
     }
 }
