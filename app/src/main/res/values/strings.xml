@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">myApp</string>
+    <string name="app_name" translatable="false">myApp</string>
     <string name="start">START</string>
     <string name="settings">SETTINGS</string>
     <string name="exit">EXIT</string>
     <string name="back">BACK</string>
     <string name="music">MUSIC</string>
-    <string name="x">X</string>
-    <string name="on">ON</string>
-    <string name="off">OFF</string>
-    <string name="music_button_description">Music control button</string>
+    <string name="on" translatable="false">ON</string>
+    <string name="off" translatable="false">OFF</string>
+    <string name="music_button_description" translatable="false">Music control button</string>
+    <string name="ru_en" translatable="false">RU | EN</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start">СТАРТ</string>
+    <string name="exit">ВЫХОД</string>
+    <string name="back">НАЗАД</string>
+    <string name="music">МУЗЫКА</string>
+    <string name="settings">НАСТРОЙКИ</string>
+</resources>

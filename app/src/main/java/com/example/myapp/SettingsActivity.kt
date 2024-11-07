@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     private var isGreen = true // Флаг для состояния
 
@@ -26,6 +25,12 @@ class SettingsActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        // Кнопка для смены языка
+        val localeButton = findViewById<Button>(R.id.Button_Locale)
+        localeButton.setOnClickListener {
+            toggleLanguage() // Смена языка при нажатии и перезапуск MainActivity
         }
 
         val backButton = findViewById<AppCompatButton>(R.id.Button_Back)
@@ -86,5 +91,27 @@ class SettingsActivity : AppCompatActivity() {
             putBoolean("isMusicOn", isGreen) // Сохраняем состояние кнопки
             apply()
         }
+    }
+
+    private fun getCurrentLocale(): String {
+        val sharedPref = getSharedPreferences("SettingsPrefs", Context.MODE_PRIVATE)
+        return sharedPref.getString("app_language", "en") ?: "en"
+    }
+
+    private fun toggleLanguage() {
+        val sharedPref = getSharedPreferences("SettingsPrefs", Context.MODE_PRIVATE)
+        val currentLanguage = getCurrentLocale()
+        val newLanguage = if (currentLanguage == "en") "ru" else "en"
+
+        with(sharedPref.edit()) {
+            putString("app_language", newLanguage)
+            apply()
+        }
+
+        // Перезапускаем приложение для применения нового языка на всех экранах
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
     }
 }
