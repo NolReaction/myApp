@@ -7,6 +7,7 @@
     <string name="music">MUSIC</string>
     <string name="on" translatable="false">ON</string>
     <string name="off" translatable="false">OFF</string>
-    <string name="music_button_description" translatable="false">Music control button</string>
+    <string name="music_button_description" translatable="false">Music control button. Press to turn the music on or off</string>
+    <string name="shark_button_description" translatable="false">An image of a button with a shark. Click to...</string>
     <string name="ru_en" translatable="false">RU | EN</string>
 </resources>
