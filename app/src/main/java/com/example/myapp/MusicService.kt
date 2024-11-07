@@ -9,7 +9,6 @@ import android.util.Log
 class MusicService : Service() {
 
     private lateinit var mediaPlayer: MediaPlayer
-    private val TAG = "MusicService"
 
     // Список треков
     private val musicList = listOf(
@@ -23,7 +22,7 @@ class MusicService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.i(TAG, "Service created")
+        Log.i("MusicService", "Service created")
 
         playRandomTrack()
     }
@@ -42,7 +41,7 @@ class MusicService : Service() {
         mediaPlayer.start()
 
         // Логируем название трека
-        Log.i(TAG, "Playing track: $trackName")
+        Log.i("MusicService", "Playing track: $trackName")
     }
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -54,7 +53,7 @@ class MusicService : Service() {
         if (::mediaPlayer.isInitialized) {
             mediaPlayer.stop()
             mediaPlayer.release()
-            Log.i(TAG, "MediaPlayer stopped and released")
+            Log.i("MusicService", "MediaPlayer stopped and released")
         }
     }
 }
