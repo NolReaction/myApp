@@ -36,7 +36,7 @@ class SettingsActivity : BaseActivity() {
             toggleLanguage() // Смена языка при нажатии и перезапуск MainActivity
         }
 
-        val backButton = findViewById<AppCompatButton>(R.id.Button_Back)
+        val backButton = findViewById<AppCompatButton>(R.id.Button_Back_Settings)
         backButton.setOnClickListener {
             Log.i("SettingsActivity", "Clicked backButton: Finish SettingsActivity")
             finish()

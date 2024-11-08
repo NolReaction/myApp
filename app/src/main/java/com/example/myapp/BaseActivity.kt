@@ -39,7 +39,8 @@ open class BaseActivity : AppCompatActivity() {
 
         // Применяем шрифт к нужным элементам
         findViewById<TextView>(R.id.Text_MUSIC)?.typeface = customTypeface
-        findViewById<AppCompatButton>(R.id.Button_Back)?.typeface = customTypeface
+        findViewById<AppCompatButton>(R.id.Button_Back_Settings)?.typeface = customTypeface
+        findViewById<AppCompatButton>(R.id.Button_Back_Donate)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Start)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Settings)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Exit)?.typeface = customTypeface

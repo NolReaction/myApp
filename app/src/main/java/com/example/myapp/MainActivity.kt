@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -37,6 +38,14 @@ class MainActivity : BaseActivity() {
         settingsButton.setOnClickListener {
             Log.i("MainActivity", "Clicked settingsButton: Go to settings")
             val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Кнопка-изображение акулы
+        val sharkImageButton = findViewById<AppCompatImageButton>(R.id.ImageButton_Shark)
+        sharkImageButton.setOnClickListener {
+            Log.i("MainActivity", "Clicked sharkImageButton: Go to Shark")
+            val intent = Intent(this, DonateActivity::class.java)
             startActivity(intent)
         }
 
