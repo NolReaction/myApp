@@ -49,6 +49,13 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        val startButton = findViewById<AppCompatButton>(R.id.Button_Start)
+        startButton.setOnClickListener {
+            Log.i("MainActivity", "Clicked startButton: Go to Play")
+            val intent = Intent(this, LevelActivity::class.java)
+            startActivity(intent)
+        }
+
         // Кнопка - Exit
         val exitButton = findViewById<Button>(R.id.Button_Exit)
         exitButton.setOnClickListener {

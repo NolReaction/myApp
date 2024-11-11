@@ -22,8 +22,10 @@ class DonateActivity : AppCompatActivity() {
 
         val backButton = findViewById<AppCompatButton>(R.id.Button_Back_Donate)
         backButton.setOnClickListener {
-            Log.i("activity_donate", "Clicked backButton: Finish SettingsActivity")
+            Log.i("activity_donate", "Clicked backButton: Finish activity_donate")
             finish()
         }
+
+
     }
 }

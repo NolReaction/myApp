@@ -41,6 +41,7 @@ open class BaseActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.Text_MUSIC)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Back_Settings)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Back_Donate)?.typeface = customTypeface
+        findViewById<AppCompatButton>(R.id.Button_Back_Level)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Start)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Settings)?.typeface = customTypeface
         findViewById<AppCompatButton>(R.id.Button_Exit)?.typeface = customTypeface
